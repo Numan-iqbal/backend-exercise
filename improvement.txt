@@ -1,0 +1,71 @@
+step 1
+===========================================================
+
+
+npm install --save-dev @types/jest @types/node
+
+step 2..
+==========================================================
+
+
+export interface ImportedItem {
+  name: string
+  type: string
+  imported: boolean
+  price: number
+}
+
+export interface ImportCostOutput {
+  name: string
+  cost: number
+}
+
+step 3..
+==========================================================
+
+
+
+
+  const importCosts: Array<ImportCostOutput> = []
+
+  importedItems.forEach((item: ImportedItem, index: number) => {
+    const taxRate = taxRates[index].importTaxRate
+    const importTax = item.imported ? 0.05 : 0
+    const cost = item.price + item.price * taxRate + item.price * importTax
+
+    importCosts.push({
+      name: item.name,
+      cost: cost
+    })
+  })
+
+  return importCosts
+  
+  
+step 4..
+  =================================================
+  
+  
+  
+  "type": "type",
+    "imported": true,
+    "price": 20
+
+
+step 5....
+====================================================
+
+
+expect(coffee?.itemCost).toBe(3720)
+
+replace to  
+
+
+expect(coffee?.cost).toBe(3720)
+
+
+final display...
+============================================
+[1:59:52 AM] File change detected. Starting incremental compilation...
+
+[1:59:52 AM] Found 0 errors. Watching for file changes.
